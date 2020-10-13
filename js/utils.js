@@ -91,4 +91,26 @@ function deepCopy(target) {
   return result
 }
 
-module.exports = { checkType, deepCopy }
+function debounce(fn, wait) {
+  let timeout = null
+  return function () {
+    if (timeout !== null) {
+      clearTimeout(timeout)
+    }
+    timeout = setTimeout(fn, wait)
+  }
+}
+
+function throttler(fn, delay) {
+  let flag = true
+  return function () {
+    if (!flag) {
+      return // 休息
+    }
+    flag = false // 营业
+    fn()
+    setTimeout(() => {
+      flag = true
+    }, delay)
+  }
+}
