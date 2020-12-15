@@ -12,7 +12,7 @@ class PriorityQueue {
   constructor(arr, compare) {
     this.heap = arr;
     this.sortedLength = 0;
-    this.compare = (a, b) => compare(a, b) > 0;
+    this.compare = (a, b) => compare(a, b) >= 0;
     this.makeHeap();
   }
 
@@ -96,5 +96,13 @@ export default class {
 
   entry() {
     return this.queue.sortOut();
+  }
+
+  size() {
+    return this.queue.size();
+  }
+
+  peek() {
+    return this.queue.heap[0];
   }
 }
